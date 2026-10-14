@@ -1,0 +1,20 @@
+@use '@valeriogc/nas-base-app/styles/_nas-theme.scss';
+@use '@valeriogc/nas-base-app/styles/partials/_reset.scss';
+@use '@valeriogc/nas-base-app/styles/_nas-apps.scss';
+@use '@valeriogc/nas-base-app/styles/_nas-buttons.scss';
+@use '@valeriogc/nas-base-app/styles/_nas-page-header.scss';
+@use '@valeriogc/nas-base-app/styles/_nas-modal.scss';
+@use '@valeriogc/nas-base-app/styles/_nas-scrollbar.scss';
+
+// The icon of a level: in its colour where it has one, beside the text it belongs to.
+.tone_icon {
+  --app-icon-size: 16px;
+  margin-right: 10px;
+  vertical-align: -3px;
+}
+
+@each $tone in error, warning, info, success {
+  .tone_text_#{$tone} {
+    color: var(--tone-#{$tone});
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "manifest_version": 1,
+  "app": {
+    "id": "nas-log-manager",
+    "name": "Visualizzatore log",
+    "version": "0.1.19",
+    "icon": "icon.svg",
+    "category": "system",
+    "system": true
+  },
+  "run": {
+    "exec": "bin/nas-log-manager-axum",
+    "socket": "/run/nas-os/apps/nas-log-manager.sock"
+  },
+  "ui": {
+    "protocol": 1
+  },
+  "provides": [],
+  "permissions": {
+    "paths": []
+  }
+}
