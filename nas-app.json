@@ -3,7 +3,7 @@
   "app": {
     "id": "nas-log-manager",
     "name": "Visualizzatore log",
-    "version": "0.1.21",
+    "version": "0.1.22",
     "icon": "icon.svg",
     "category": "system",
     "system": true
