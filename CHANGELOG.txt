@@ -2,6 +2,13 @@
 
 All notable changes to nas-log-manager are documented in this file.
 
+## [Unreleased]
+
+### Fixed
+
+- Opened from a notification without a log file, the app shows the list instead of an empty
+  detail with an error.
+
 ## [0.1.21]
 
 ### Changed

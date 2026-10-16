@@ -23,7 +23,7 @@ export function useNotifications(locale: Ref<Locale>) {
   // Only the answer to the latest log asked for is shown: a slower earlier one is dropped.
   let logRequest = 0;
 
-  // Opened from a notification of the launcher: the page is asked for that one.
+  // Opened from a notification of the launcher: the page is asked for that one, if it has a log.
   const requested = new URL(window.location.href).searchParams.get('notification');
 
   const sourceLabels = computed(() => {
@@ -75,7 +75,7 @@ export function useNotifications(locale: Ref<Locale>) {
       if (
         requested &&
         selected.value === null &&
-        entries.value.some((entry) => entry.id === requested)
+        entries.value.some((entry) => entry.id === requested && entry.log)
       ) {
         select(requested);
       }

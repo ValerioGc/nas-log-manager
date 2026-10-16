@@ -277,6 +277,22 @@ describe('notification dashboard', () => {
     expect(wrapper.find('.detail_card').exists()).toBe(false);
   });
 
+  it('opens the notification the launcher asked for only when it has a log', async () => {
+    window.history.replaceState({}, '', '/apps/nas-log-manager/?notification=3');
+    const opened = await render(answers(listed, logOf('/var/log/nas-os/warning.log', ['line'])));
+    expect(opened.asked[1]).toEqual(['diagnostic-log', '3']);
+    expect(opened.wrapper.text()).toContain('/var/log/nas-os/warning.log');
+    opened.wrapper.unmount();
+
+    const bare: Entry = { ...entries[2]!, id: '5', log: null };
+    window.history.replaceState({}, '', '/apps/nas-log-manager/?notification=5');
+    const { wrapper, asked } = await render(
+      answers(() => ({ success: true, data: [...entries, bare] })),
+    );
+    expect(asked.map(([type]) => type)).not.toContain('diagnostic-log');
+    expect(wrapper.find('.detail_card').exists()).toBe(false);
+  });
+
   it('deletes one entry and closes its open diagnostic detail', async () => {
     const { wrapper, asked } = await render(
       answers(listed, logOf('/var/log/app.log', ['failure']), done),
