@@ -247,7 +247,7 @@ dependencies = [
 
 [[package]]
 name = "nas-log-manager-axum"
-version = "0.1.22"
+version = "0.1.23"
 dependencies = [
  "axum",
  "serde_json",
