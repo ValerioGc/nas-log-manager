@@ -83,8 +83,10 @@ test('filtering notifications by tone and origin updates the visible list', asyn
 test('notification details show log lines and can be closed', async ({ page }) => {
   const app = await openInShell(page);
   const notification = app.getByRole('row', { name: /Disco pieno/ });
-  await expect(notification.getByRole('cell').last()).toContainText('Dettagli');
-  await notification.getByRole('button', { name: 'Dettagli', exact: true }).click();
+  const open = notification.getByRole('cell').last().getByRole('button', { name: 'Dettagli' });
+  await expect(open).toHaveAttribute('title', 'Dettagli');
+  await expect(open).toHaveText('');
+  await open.click();
 
   const details = app.getByRole('dialog', { name: 'Dettagli' });
   await expect(details).toBeVisible();

@@ -238,7 +238,10 @@ describe('notification dashboard', () => {
     expect(headings.slice(0, 3)).toEqual(['Ora', 'Titolo', 'Origine']);
     expect(cells).toHaveLength(headings.length);
     expect(cells[2].text()).toBe('storage');
-    expect(cells.at(-1)?.find('.details_button').text()).toBe('Dettagli');
+    const details = cells.at(-1)?.get('.details_button');
+    expect(details?.text()).toBe('');
+    expect(details?.attributes('aria-label')).toBe('Dettagli');
+    expect(details?.attributes('title')).toBe('Dettagli');
     expect(cells.at(-1)?.find('.delete_button').exists()).toBe(true);
   });
 

@@ -95,9 +95,11 @@ const ICONS: Record<Level, string> = { error, warning };
                   v-if="entry.log"
                   class="details_button"
                   type="button"
+                  :aria-label="t.details"
+                  :title="t.details"
                   @click="emit('select', entry.id)"
                 >
-                  {{ t.details }}
+                  <span class="details_icon" aria-hidden="true"></span>
                 </button>
                 <button
                   class="delete_button"
@@ -219,30 +221,40 @@ td small {
   font-weight: 650;
 }
 
-.details_button {
-  padding: 6px 12px;
-  border: 1px solid var(--nas-border);
-  border-radius: 8px;
-  background: var(--nas-panel);
-  color: var(--accent);
-  font-weight: 650;
-  white-space: nowrap;
-}
-
+.details_button,
 .delete_button {
   display: inline-grid;
   place-items: center;
   min-width: 32px;
   min-height: 32px;
   padding: 4px;
+}
+
+.details_button {
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--accent);
+}
+
+.delete_button {
   color: var(--nas-error);
 }
 
+.details_icon,
 .delete_icon {
   display: block;
   width: 18px;
   height: 18px;
   background: currentColor;
+}
+
+.details_icon {
+  mask: url('../assets/icons/details.svg') center / contain no-repeat;
+  -webkit-mask: url('../assets/icons/details.svg') center / contain no-repeat;
+}
+
+.delete_icon {
   mask: url('../assets/icons/delete.svg') center / contain no-repeat;
   -webkit-mask: url('../assets/icons/delete.svg') center / contain no-repeat;
 }
