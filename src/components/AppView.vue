@@ -38,7 +38,7 @@ const ICONS: Record<Level, string> = { error, warning };
             }}
           </small>
         </div>
-        <button type="button" class="close" autofocus :aria-label="t.close" @click="emit('close')">
+        <button type="button" class="close" :aria-label="t.close" @click="emit('close')">
           <span class="close_icon" aria-hidden="true"></span>
         </button>
       </div>

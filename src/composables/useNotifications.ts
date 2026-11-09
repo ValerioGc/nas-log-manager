@@ -78,7 +78,7 @@ export function useNotifications(locale: Ref<Locale>) {
         selected.value === null &&
         entries.value.some((entry) => entry.id === requested && entry.log)
       ) {
-        select(requested);
+        void select(requested);
       }
     } catch (cause) {
       error.value = cause instanceof Error ? cause.message : t.value.genericError;
