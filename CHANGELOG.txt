@@ -2,6 +2,12 @@
 
 All notable changes to nas-log-manager are documented in this file.
 
+## [0.9.3]
+
+### Changed
+
+- Update documentation, dependencies, and remove unused code.
+
 ## [0.9.2]
 
 ### Changed
